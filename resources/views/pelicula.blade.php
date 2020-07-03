@@ -108,10 +108,35 @@
 
                     @if( $film->film_Estado == 1)
                             <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center  " >
-                                                          
-                                <h1 >No Olvides dejar tu Voto</h1>    
+                                <h1 >No Olvides dejar tu Voto</h1>                                     
+                                     
+                                <div class="accordion" id="accordionExample">
                                     
-                                <button type="button" class="btn btn-primary btn-lg">Votar</button>       
+                                    <div class="card">
+                                        <div class="card-header" id="headingTwo">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-primary btn-block text-left collapsed text-center" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Votar
+                                            </button>
+                                        </h2>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                        <!--<div class="card-body">
+                                                <button type="button" class="btn btn-success">Buena</button>
+                                                <button type="button" class="btn btn-warning">Regular</button>
+                                                <button type="button" class="btn btn-danger">Mala</button>
+                                            </div>-->
+
+                                            <div class="card-body">
+                                                <button type="button" class="btn btn-success btn-block">Buena</button>
+                                                <button type="button" class="btn btn-warning btn-block">Regular</button>
+                                                <button type="button" class="btn btn-danger btn-block">Mala</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            
                             </div>
                             <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 text-center embed-container">
                                 <iframe src="https://player.vimeo.com/video/{{$film->film_Url}}" width="640" height="360"  frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
