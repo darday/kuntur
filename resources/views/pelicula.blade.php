@@ -110,8 +110,7 @@
                             <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center  " >
                                                           
                                 <h1 >No Olvides dejar tu Voto</h1>    
-                                <h1 >No Olvides dejar tu Voto</h1>    
-                                <h1 >No Olvides dejar tu Voto</h1>    
+                                    
                                 <button type="button" class="btn btn-primary btn-lg">Votar</button>       
                             </div>
                             <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 text-center embed-container">
