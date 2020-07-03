@@ -11,7 +11,7 @@
         <!--Bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <!-- Styles -->
-        <link rel="stylesheet" href="../css/style.css" >
+        <link rel="stylesheet" href="css/style.css" >
         <style>
             html, body {
                 background-color: #fff;
@@ -69,7 +69,7 @@
         
     
         
-         @include('components/navBar2')
+         @include('components/navBar')
 
        
 
@@ -83,7 +83,7 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                 <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item active" style="background-image: url('../../img/carousel/carousel1.gif')">
+                <div class="carousel-item active" style="background-image: url('../img/carousel/carousel1.gif')">
                     <div class="carousel-caption d-none d-md-block"  style=";">
                     <h2 class="display-4" >Fundación Arte Nativo</h2>
                     <p class="lead text-center" >This is a description for the first slide.</p>
@@ -131,7 +131,7 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center">
                         <div id="mainwrapper">
                             <div  class="box">
-                                <a href="project1.php">
+                                <a href="{{url('/pelicula/'.$film->id)}}">
                                 <img src="{{ asset('storage').'/'. $film->film_imagen}}" alt="foto"  height="320px" width="100%">  <!--se debe agregar php artisan storage:link-->                  
                                     <span class="caption full-caption text-center">
                                         <br><br><br><br><br>

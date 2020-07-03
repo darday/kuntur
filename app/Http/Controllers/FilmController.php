@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Film;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class FilmController extends Controller
 {
@@ -22,6 +24,14 @@ class FilmController extends Controller
         $datos['film']=Film::paginate(20);
         $count['count']=$film::count();
         return view('peliculas',$datos,$count);
+    }
+
+    public function pelicula(Film $film, $id)
+    {
+        //return ('pelicula');
+        $datos['film']=Film::findOrFail($id);
+       // $count['count']=$film::count();
+        return view('pelicula',$datos);
     }
 
     
@@ -57,6 +67,8 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $request->user()->authorizeRole('admin');   
         $request->user()->authorizeRole('admin');
         $usuario = request() ->except('_token');
         
@@ -86,9 +98,16 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function edit(Film $film)
+    public function edit( $id)
     {
-        //
+        $film=Film::findOrFail($id);
+        $estado['estado']=Film::findOrFail($id);
+        if($estado['estado']->film_Estado == 0){
+            $estado['estado']='Deshabilitado';
+        }else{
+            $estado['estado']='Habilitado';
+        }
+        return view('admin.editfilm',compact('film'),$estado);
     }
 
     /**
@@ -98,9 +117,21 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Film $film)
+    public function update(Request $request, $id)
     {
-        return('hola');
+        $film2 = request() ->except(['_token','_method']); 
+       
+        $film=Film::findOrFail($id);
+        if($request->file('film_imagen')){
+            Storage::delete('public/'. $film->film_imagen);
+            $film2['film_imagen']=$request->file('film_imagen')->store('uploads','public');
+        }
+        
+        $film->update($film2);
+        //return $usuario2['Usu_Imagen'] ;
+       // $usuario['Usu_Imagen']->update($usuario['Usu_Imagen']);
+      
+        return redirect('/edit/'.$id.'/edit')->with('Mensaje','Película Modificadas con Exito');
     }
 
     /**
@@ -109,8 +140,17 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Film $film)
+    public function destroy($id)
     {
-        //
+       // return ('destroy;');
+        $film=Film::findOrFail($id);
+        if(Storage::delete('public/'. $film->film_imagen)){
+            Film::destroy($id);
+        } 
+        Film::destroy($id);
+
+        
+        return redirect('/listar')->with('Mensaje','Película eliminada con Exito');
     }
+    
 }

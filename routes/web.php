@@ -23,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/peliculas', 'FilmController@peliculas')->name('peliculas');
+Route::get('/pelicula/{id}', 'FilmController@pelicula')->name('pelicula');
 
 Auth::routes();
 
@@ -33,7 +34,9 @@ Route::get('/admin', 'FilmController@index')->name('admin');
 Route::get('/create', 'FilmController@agregar')->name('create');
 Route::post('/create', 'FilmController@store')->name('create');
 Route::get('/listar', 'FilmController@show')->name('listar');
-Route::get('/edit', 'FilmController@update')->name('edit');
+Route::get('/edit/{admin}/edit', 'FilmController@edit')->name('edit');
+Route::patch('/edit/{admin}', 'FilmController@update')->name('edit');
+Route::delete('/delete/{admin}', 'FilmController@destroy')->name('delete');
 
 
 

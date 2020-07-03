@@ -23,6 +23,7 @@ class CreateFilmsTable extends Migration
             $table->string('film_Categoria');
             $table->boolean('film_Estado');
             $table->string('film_imagen');
+            $table->string('film_Url');
             $table->text('film_Descripcion');
             $table->timestamps();
         });

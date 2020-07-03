@@ -14,7 +14,7 @@
                     }}@endif
                 </div>
                  <div class="card-body">
-                    <form method="POST" action="{{ route('create') }}"  enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('create') }}"   enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -95,11 +95,23 @@
                             </div>
                         </div>
 
-                       
+                        <div class="form-group row">
+                            <label for="titulo" class="col-md-12 col-form-label ">Url Vimeo: </label>
+
+                            <div class="col-md-12">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="film_Url" value="" required autocomplete="name" autofocus>
+                            </div>
+                        </div>
+
                         <div class="custom-file">
                             <label for="exampleFormControlFile1">Imagen:</label>
                             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="film_imagen">    
                         </div>
+
+                       
+
+                       
+                        
 
                        
 

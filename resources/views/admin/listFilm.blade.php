@@ -22,6 +22,7 @@
                             <th>Titulo</th>
                             <th>Director</th>
                             <th>Categoria</th>
+                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -36,21 +37,21 @@
                             <td>{{$film->film_Titulo}}</td>
                             <td>{{$film->film_Director}}</td>
                             <td>{{$film->film_Categoria}}</td>
+                            <td>{{$film->film_Estado}}</td>
+                            
                             
                             <td>
 
-                            <a href="{{url('/edit/'.$film->film_id.'/edit')}}">
+                            <a href="{{url('/edit/'.$film->id.'/edit')}}">
                                 <button type="button" class="btn btn-warning"> Editar</button>
                             </a>
-                            
-                            
-                            
-                            <form method="post" action="{{url('/create/'.$film->film_id)}}">
+
+                            <form method="post" action="{{url('/delete/'.$film->id)}}">
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}
-                                <button type="Submit" class="btn btn-danger">Borrar</button>
-                                <button type="Submit" onclick="return confirm('?Borrar?');  " > Borrar</button>
-                            </form>
+                                <button type="Submit" class="btn btn-danger" onclick="return confirm('¿Desea Borrar?');  " > Borrar</button>
+                            </form>         
+                           
                             </td>
                         </tr>
                         @endforeach
