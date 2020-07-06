@@ -98,12 +98,14 @@
                         @endif              
                                         
                     </div>
+
+                    
                
                     <!--------------------------------------------------------->
             </div>   
 
                 <div class="row  align-items-center">
-                    
+                     
                     
 
                     @if( $film->film_Estado == 1)
@@ -120,20 +122,47 @@
                                             </button>
                                         </h2>
                                         </div>
+                                        @if(Auth::user())
                                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                         <!--<div class="card-body">
-                                                <button type="button" class="btn btn-success">Buena</button>
-                                                <button type="button" class="btn btn-warning">Regular</button>
-                                                <button type="button" class="btn btn-danger">Mala</button>
+                                                <button type="button" class="btn btn-success">Sobresaliente</button>
+                                                <button type="button" class="btn btn-warning">Muy Buena</button>
+                                                <button type="button" class="btn btn-danger">Buena</button>
                                             </div>-->
 
                                             <div class="card-body">
-                                                <button type="button" class="btn btn-success btn-block">Buena</button>
-                                                <button type="button" class="btn btn-warning btn-block">Regular</button>
-                                                <button type="button" class="btn btn-danger btn-block">Mala</button>
+                                                <form method="post" action="{{url('/vote/'.$film->id)}}">
+                                                    {{csrf_field()}}
+                                                    <input type="hidden" name="vote" value="1">                                                   
+                                                    <button type="Submit" class="btn btn-danger"  > Sobresaliente</button>
+                                                </form>  
+                                                <form method="post" action="{{url('/vote/'.$film->id)}}">
+                                                    {{csrf_field()}}
+                                                    <input type="hidden" name="vote" value="2">                                                   
+                                                    <button type="Submit" class="btn btn-danger"  > Muy Bueno</button>
+                                                </form>  
+                                                <form method="post" action="{{url('/vote/'.$film->id)}}">
+                                                    {{csrf_field()}}
+                                                    <input type="hidden" name="vote" value="3">                                                   
+                                                    <button type="Submit" class="btn btn-danger"  > Bueno</button>
+                                                </form>  
+                                                
+                                                
+                                                
                                             </div>
                                         </div>
+                                        @endif
+                                        
+                                        @if (Auth::user() == null)
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <h2>Debes iniciar sesion para poder Votar</h2>                                                
+                                            </div>
+                                        </div>
+                                        @endif
+
                                     </div>
+                                    
                                     
                                 </div>
                             

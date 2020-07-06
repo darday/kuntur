@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Film;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class FilmController extends Controller
@@ -19,6 +22,61 @@ class FilmController extends Controller
         return view('admin.createFilm');
     }
 
+
+    public function vote(request $request, $id_peli){
+        $id_cal=$request["vote"];
+        $id_user=Auth::user()->id;
+        $datos['film']=Film::findOrFail($id_peli);
+        
+        if($id_cal == 1){
+            DB::table('calificacion_film_user')->insert([
+                'calificacion_id' => $id_cal,
+                'film_id' => $id_peli,
+                'user_id' =>$id_user,
+                
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),        
+            ]);
+
+
+            return ('se guardo');
+
+        }
+        if($id_cal == 2){
+            DB::table('calificacion_film_user')->insert([
+                'calificacion_id' => $id_cal,
+                'film_id' => $id_peli,
+                'user_id' =>$id_user,
+                
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),        
+            ]);
+
+
+            return ('se guardo2');
+            
+
+        }
+        if($id_cal==3){
+            DB::table('calificacion_film_user')->insert([
+                'calificacion_id' => $id_cal,
+                'film_id' => $id_peli,
+                'user_id' =>$id_user,
+                
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),        
+            ]);
+
+
+            return ('se guardo3');
+        }
+        
+       
+        
+    }
+
+
+
     public function peliculas(Film $film)
     {
         $datos['film']=Film::paginate(20);
@@ -28,10 +86,22 @@ class FilmController extends Controller
 
     public function pelicula(Film $film, $id)
     {
-        //return ('pelicula');
+        
+        if(Auth::user()){
+        $id_user['id_user']=Auth::user()->id;
         $datos['film']=Film::findOrFail($id);
-       // $count['count']=$film::count();
-        return view('pelicula',$datos);
+        // $count['count']=$film::count();
+         return view('pelicula',$datos,$id_user);
+        }
+        else{
+            
+        $datos['film']=Film::findOrFail($id);
+        // $count['count']=$film::count();
+         return view('pelicula',$datos);
+        }
+    
+        
+       
     }
 
     

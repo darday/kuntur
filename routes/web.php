@@ -1,8 +1,13 @@
 <?php
 
+use App\Film;
 use Illuminate\Support\Facades\Route;
 use App\User;
+use App\Calificacion;
 use App\permisos\Models\Role;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +29,7 @@ Route::get('/', function () {
 
 Route::get('/peliculas', 'FilmController@peliculas')->name('peliculas');
 Route::get('/pelicula/{id}', 'FilmController@pelicula')->name('pelicula');
+Route::post('/vote/{id}', 'FilmController@vote')->name('vote');
 
 Auth::routes();
 
@@ -65,12 +71,37 @@ Route::get('/test', function () {
         'full-acces'=>'no'
     ]);*/
 
-   /* $user= User::find(1);
-    //$user->roles()->attach([1,2,3]);
-    //$user->roles()->detach([1,3]);
-    $user->roles()->sync([1]);
+    $id_user =  User::where('id',1)->first();
+    //dd($id_user->id);
+    $id_film =  Film::where('id',1)->first();
+    $id_calif =  Calificacion::where('id',1)->first();
 
-    return $user->roles;*/
+    
+    DB::table('calificacion_film_user')->insert([
+        'calificacion_id' => '1',
+        'film_id' => '1',
+        'user_id' =>'1',
+        
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now(),
+       
+        //'tutor_id' => 0
+    ]);
+
+    return redirect('/create')->with('Mensaje','Film Agregado con Exito');
+    
+
+    //$user= User::find(1);
+    //dd($user->id);
+
+    //$user->film()->attach([1,1]);
+    //$user->roles()->detach([1,3]);
+    //$user->film()->sync([1]);
+    
+
+    //$user->califficacion()->sync([1]);
+
+    return $id_calif  ;
     
     
 

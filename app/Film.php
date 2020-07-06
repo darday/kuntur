@@ -16,4 +16,12 @@ class Film extends Model
         
     protected $fillable=["film_id","film_Titulo","film_Director","film_Anio","film_Duracion",
                         "film_Ciudad","film_Categoria","film_Estado","film_imagen","film_Url","film_Descripcion"];
+
+
+    public function users(){
+        return $this->belongsToMany('App\User')->withTimestamps();
+    }
+    public function calificacion(){
+        return $this->belongsToMany('App\Calificacion')->withTimestamps();
+    }
 }

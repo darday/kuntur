@@ -13,6 +13,17 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany('App\permisos\Models\Role')->withTimestamps();
     }
+
+    public function film(){
+        return $this->belongsToMany('App\Film')->withTimestamps();
+
+    }
+
+    public function calificacion(){
+        return $this->belongsToMany('App\Calificacion')->withTimestamps();
+    }
+
+
 //validar a los usuarios
 
 
@@ -64,6 +75,8 @@ public function authorizeRole($roles){
     protected $fillable = [
         'name', 'email', 'password','rol',
     ];
+
+
 
     /**
      * The attributes that should be hidden for arrays.

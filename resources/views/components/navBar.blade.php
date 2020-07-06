@@ -45,13 +45,13 @@
                     @if (Route::has('login'))
                         <div class="right link buttonunion" style="padding: 0 0 px">
                             @auth
-                                @if(Auth::user()->rol == 'admin'){
-                                       <a href="{{ url('/admin') }}"> {{Auth::user()->rol}}</a>
-                                }@endif 
+                                @if(Auth::user()->rol == 'admin')
+                                       <a href="{{ url('/admin') }}">  PERFIL ADMIN</a>
+                                @endif 
 
-                                 @if(Auth::user()->rol == 'user'){
-                                       <a href="{{ url('/home') }}"> {{Auth::user()->rol}}</a>
-                                }@endif
+                                 @if(Auth::user()->rol == 'user')
+                                       <a href="{{ url('/home') }}">  PERFIL</a>
+                                @endif
                                
                              
                             @else
