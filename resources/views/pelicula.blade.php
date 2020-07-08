@@ -155,6 +155,8 @@
                                         
                                         @if (Auth::user() == null)
                                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                 
+
                                             <div class="card-body">
                                                 <h2>Debes iniciar sesion para poder Votar</h2>                                                
                                             </div>

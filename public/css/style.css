@@ -7,12 +7,15 @@
 .text-center{
     text-align: center;
 }
+/**************Nav*******************/
 .bg-dark {
-  background-color: #141414be !important;
+  background-color: #f5ededbe !important;
    /* background-image: url('img/bg-img/bg2.jpg');*/
 }
 .navbar-dark .navbar-nav .nav-link {
-    color: white !important;
+    color: black !important;
+
+
 }
 li {
     text-align: Helvetica !important;
@@ -20,27 +23,44 @@ li {
 a:-webkit-any-link {
     color: Helvetica !important;
     cursor: pointer;
-    font-family: VPT Sans,Helvetica,Arial,sans-serif !important;
+    font-family: "Calibri"  !important;
+
 }
 @media (min-width: 992px){}
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 1rem;
     padding-left: 0.5rem;
 }
-
+/*************fin de nav***************/
 p
 {
     text-align: justify;
 }
+
+/*******TITULOS **************/
+h1.titulo {
+    font-family: "Calibri"  !important;
+    font-style: Italic !important;
+    font-weight: bold !important;
+    letter-spacing: 20px !important;
+    font-size: 3.2em;
+  }
+.subrayado{
+    font-size: 5px;
+    text-decoration: underline;
+
+}
+/**********FIN DE TITULO **********/
+
 /*imagen responsive*/
 .responsive {
     width: 100%;
     height: auto;
   }
-.ancho{
-    width: 100%; 
-    height: auto;
-}
+
+
+
+
 
 .embed-container {
   position: relative;
@@ -58,23 +78,89 @@ p
 /************imagenes de proyectos**************/
 
 
+/***********Texto sobre Imagen***************/
 
+
+.cont_img{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.texto-encima{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.text_cent_img{
+    position: absolute;
+    top: 60%;
+    left: 28%;
+    transform: translate(-50%, -50%);
+}
+
+h1.tit-sob-img {
+    font-family: "Calibri"  !important;
+
+    font-weight: bold !important;
+    letter-spacing: 0px !important;
+    font-size: 9em;
+
+  }
+  @media screen and (min-width: 200px) {
+    .tit-sob-img h1 {
+
+        font-size: 9em !important;
+    };
+  }
+@media screen and (min-width: 475px) {
+    h1 .tit-sob-img h1 {
+
+        font-size: 9em !important;
+    }
+  };
+
+  @media screen and (min-width: 770px) {
+    .bradcumb-title h1 {
+
+        font-size: 9em;
+    };
+    }
+  @media screen and (min-width: 1000px) {
+    .bradcumb-title h1 {
+
+
+      font-size: 9em;
+    };
+
+    @media screen and (min-width: 1500px) {
+        .bradcumb-title h1 {
+
+
+          font-size: 9em;
+        };
+  }
+
+
+/***********finTexto sobre Imagen***************/
 
 
 /*#mainwrapper {
 	/*font: 10pt normal Arial, sans-serif;
-	
+
 	margin: 80px auto 0 auto;
 	text-align: center;
     width: 100%;
     height: auto;
 }*/
 
+/*************iMAGENES con deslizador******************************/
 /* Image Box Style */
 #mainwrapper .box {
 	border: 5px solid #fff;
 	cursor: pointer;
-	
+
 	float: left;
 	margin: 0px;
 	position: relative;
@@ -86,12 +172,12 @@ p
 		box-shadow: 1px 1px 1px 1px #ccc;
 }
 #mainwrapper .box img {
-	
+
 	left: 0;
 		-webkit-transition: all 300ms ease-out;
 		-moz-transition: all 300ms ease-out;
 		-o-transition: all 300ms ease-out;
-		-ms-transition: all 300ms ease-out;	
+		-ms-transition: all 300ms ease-out;
 	transition: all 300ms ease-out;
 }
 
@@ -104,7 +190,7 @@ p
 		-webkit-transition: all 300ms ease-out;
 		-moz-transition: all 300ms ease-out;
 		-o-transition: all 300ms ease-out;
-		-ms-transition: all 300ms ease-out;	
+		-ms-transition: all 300ms ease-out;
 		transition: all 300ms ease-out;
 	left: 0;
 }
@@ -112,7 +198,7 @@ p
 
 /** Caption 2: Full Width & Height **/
 #mainwrapper .box .full-caption {
-		
+
 	top: -500px;
 	text-align: left;
     padding: 15px;
@@ -155,7 +241,7 @@ p
     position: relative;
     z-index: 1;
     background-image: url(../assets/bg-images/bg3.jpg);
-    
+
 }
 
 
@@ -178,30 +264,30 @@ p
 }
 @media screen and (min-width: 200px) {
     .bradcumb-title h2 {
-     
+
       font-size: 26px;
     };
   }
 @media screen and (min-width: 475px) {
     .bradcumb-title h2 {
-    
+
       font-size:35px;
     }
   };
-  
+
   @media screen and (min-width: 770px) {
     .bradcumb-title h2 {
-      
+
       font-size: 40px;
     };
     }
   @media screen and (min-width: 1000px) {
     .bradcumb-title h2 {
-      
+
       font-size: 46px;
     };
-    
-  }  
+
+  }
 .breadcumb-nav .breadcrumb {
     padding: 0;
     margin-bottom: 0;
@@ -220,7 +306,7 @@ p
     content: "\f105";
     font-family: 'FontAwesome'
 }
-  
+/***********FIN BANNER***********************/
 /*********************Animaciones*****************************/
 .animated {
   -webkit-animation-duration: 1s;
@@ -240,22 +326,22 @@ p
     from {
       opacity: 0;
     }
-  
+
     to {
       opacity: 1;
     }
   }
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;
     }
-  
+
     to {
       opacity: 1;
     }
   }
-  
+
   .fadeIn {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
@@ -267,7 +353,7 @@ p
       -webkit-transform: scale3d(0.3, 0.3, 0.3);
       transform: scale3d(0.3, 0.3, 0.3);
     }
-  
+
     50% {
       opacity: 1;
     }
@@ -279,52 +365,52 @@ p
       -webkit-transform: scale3d(0.3, 0.3, 0.3);
       transform: scale3d(0.3, 0.3, 0.3);
     }
-  
+
     50% {
       opacity: 1;
     }
   }
-  
+
   .zoomIn {
     -webkit-animation-name: zoomIn;
     animation-name: zoomIn;
   }
 
   /*ascendente*/
- 
+
   @-webkit-keyframes fadeInUp {
     from {
       opacity: 0;
       -webkit-transform: translate3d(0, 100%, 0);
       transform: translate3d(0, 100%, 0);
     }
-  
+
     to {
       opacity: 1;
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0);
     }
   }
-  
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
       -webkit-transform: translate3d(0, 100%, 0);
       transform: translate3d(0, 100%, 0);
     }
-  
+
     to {
       opacity: 1;
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0);
     }
   }
-  
+
   .fadeInUp {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
   }
-  
+
   .buttonunion{
     padding: 0,0px;
 

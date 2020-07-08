@@ -66,96 +66,58 @@
         </style>
     </head>
     <body>
-        
-    
-        
+
+
+
          @include('components/navBar')
 
-       
 
-        <carousel>
 
-            <div id="carouselExampleIndicators" class="carousel slide animated fadeInUp " data-ride="carousel">
-                <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item active" style="background-image: url('../img/carousel/carousel1.gif')">
-                    <div class="carousel-caption d-none d-md-block"  style=";">
-                    <h2 class="display-4" >Fundación Arte Nativo</h2>
-                    <p class="lead text-center" >This is a description for the first slide.</p>
-                    </div>
-                </div>
-                <!-- Slide Two - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('../img/carousel/carousel2.png')">
-                    <div class="carousel-caption d-none d-md-block">
-                    <h2 class="display-4">Fundación Arte Nativo</h2>
-                    <p class="lead text-center">This is a description for the second slide.</p>
-                    </div>
-                </div>
-                <!-- Slide Three - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('../img/carousel/carousel3.jpg')">
-                    <div class="carousel-caption d-none d-md-block">
-                    <h2 class="display-4">Fundación Arte Nativo</h2>
-                    <p class="lead text-center">This is a description for the third slide.</p>
-                    </div>
-                </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                    </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                    </a>
-            </div>
-        
-        </carousel>
+         <div class="cont_img">
+            <img src="../img/carousel/PORTADA_INICIO.jpg" class="responsive" alt="Responsive image">
+            <div class="text_cent_img"><h1 class="tit-sob-img">Películas</h1></div>
+          </div>
 
         <div class="container">
              <br>
-            <h4>{{$count}}  Películas Participantes</h4> 
+            <h4>{{$count}}  Películas Participantes</h4>
             <hr>
-             
-              
-                 
+
+
+
 
             <div class="container animated fadeInUp">
                 <div class="row ">
-                   
+
   @foreach($film as $film)
                     <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center">
                         <div id="mainwrapper">
                             <div  class="box">
                                 <a href="{{url('/pelicula/'.$film->id)}}">
-                                <img src="{{ asset('storage').'/'. $film->film_imagen}}" alt="foto"  height="320px" width="100%">  <!--se debe agregar php artisan storage:link-->                  
+                                <img src="{{ asset('storage').'/'. $film->film_imagen}}" alt="foto"  height="320px" width="100%">  <!--se debe agregar php artisan storage:link-->
                                     <span class="caption full-caption text-center">
                                         <br><br><br><br><br>
                                         <button type="button" class="btn btn-warning">Ver Película</button>
-                                        
+
                                     </span>
-                                </a> 
-                                <br>   
+                                </a>
+                                <br>
                             </div>
-                            
+
                             <div class="card-body">
                                 <h5 class="card-title" type="hidden"></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><b>{{$film->film_Titulo}}</b></h6>
                              </div>
-                            
-                           
-                
-                            
-                                        
+
+
+
+
+
                         </div>
                     </div>
                 @endforeach
                     <!--------------------------------------------------------->
-                </div>   
+                </div>
             </div>
 
             <!--hasta Aqui-->

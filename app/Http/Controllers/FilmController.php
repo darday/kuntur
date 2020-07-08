@@ -27,52 +27,69 @@ class FilmController extends Controller
         $id_cal=$request["vote"];
         $id_user=Auth::user()->id;
         $datos['film']=Film::findOrFail($id_peli);
-        
+
+        $users = DB::table('calificacion_film_users')->select('calificacion_id')->where('film_id',$id_peli)->where('user_id',$id_user)-> get();
+
+       if($users->count() > 0){
+            $eliminar= DB::table('calificacion_film_users')->where('film_id',$id_peli)->where('user_id',$id_user)->delete();
+
+        }
+
+
+
+
         if($id_cal == 1){
-            DB::table('calificacion_film_user')->insert([
+
+           /* $vote['calificacion_id']=$id_cal;
+            $vote['film_id']=$id_peli;
+            $vote['user_id']=$id_user;
+
+            CalificacionFilmUserController::insert($usuario);*/
+
+            DB::table('calificacion_film_users')->insert([
                 'calificacion_id' => $id_cal,
                 'film_id' => $id_peli,
                 'user_id' =>$id_user,
-                
+
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),        
+                'updated_at' => Carbon::now(),
             ]);
 
 
-            return ('se guardo');
+            return view('voto');
 
         }
         if($id_cal == 2){
-            DB::table('calificacion_film_user')->insert([
+            DB::table('calificacion_film_users')->insert([
                 'calificacion_id' => $id_cal,
                 'film_id' => $id_peli,
                 'user_id' =>$id_user,
-                
+
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),        
+                'updated_at' => Carbon::now(),
             ]);
 
 
-            return ('se guardo2');
-            
+            return view('voto');
+
 
         }
         if($id_cal==3){
-            DB::table('calificacion_film_user')->insert([
+            DB::table('calificacion_film_users')->insert([
                 'calificacion_id' => $id_cal,
                 'film_id' => $id_peli,
                 'user_id' =>$id_user,
-                
+
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),        
+                'updated_at' => Carbon::now(),
             ]);
 
 
-            return ('se guardo3');
+            return view('voto');
         }
-        
-       
-        
+
+
+
     }
 
 
@@ -86,7 +103,7 @@ class FilmController extends Controller
 
     public function pelicula(Film $film, $id)
     {
-        
+
         if(Auth::user()){
         $id_user['id_user']=Auth::user()->id;
         $datos['film']=Film::findOrFail($id);
@@ -94,28 +111,28 @@ class FilmController extends Controller
          return view('pelicula',$datos,$id_user);
         }
         else{
-            
+
         $datos['film']=Film::findOrFail($id);
         // $count['count']=$film::count();
          return view('pelicula',$datos);
         }
-    
-        
-       
+
+
+
     }
 
-    
+
     public function index(Request $request)
     {
         //$request = user()->queryRole('admin');
-        
-        //return $role;    
+
+        //return $role;
         $request->user()->authorizeRole('admin');
         $films=Film::all();
-        
 
-        
-        
+
+
+
         return view('admin.admin');
     }
 
@@ -126,7 +143,7 @@ class FilmController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -137,13 +154,13 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $request->user()->authorizeRole('admin');   
+
+        $request->user()->authorizeRole('admin');
         $request->user()->authorizeRole('admin');
         $usuario = request() ->except('_token');
-        
+
         if($request->file('film_imagen')){
-           
+
             $usuario['film_imagen']=$request->file('film_imagen')->store('uploads','public');
         }
       Film::insert($usuario);
@@ -189,18 +206,18 @@ class FilmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $film2 = request() ->except(['_token','_method']); 
-       
+        $film2 = request() ->except(['_token','_method']);
+
         $film=Film::findOrFail($id);
         if($request->file('film_imagen')){
             Storage::delete('public/'. $film->film_imagen);
             $film2['film_imagen']=$request->file('film_imagen')->store('uploads','public');
         }
-        
+
         $film->update($film2);
         //return $usuario2['Usu_Imagen'] ;
        // $usuario['Usu_Imagen']->update($usuario['Usu_Imagen']);
-      
+
         return redirect('/edit/'.$id.'/edit')->with('Mensaje','Película Modificadas con Exito');
     }
 
@@ -216,11 +233,11 @@ class FilmController extends Controller
         $film=Film::findOrFail($id);
         if(Storage::delete('public/'. $film->film_imagen)){
             Film::destroy($id);
-        } 
+        }
         Film::destroy($id);
 
-        
+
         return redirect('/listar')->with('Mensaje','Película eliminada con Exito');
     }
-    
+
 }

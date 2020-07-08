@@ -11,7 +11,7 @@
         <!--Bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <!-- Styles -->
-        <link rel="stylesheet" href="css/style.css" >
+        <link rel="stylesheet" href="../css/style.css" >
         <style>
             html, body {
                 background-color: #fff;
@@ -63,47 +63,33 @@
             .m-b-smd {
                 margin-bottom: 30px;
             }
-
-
         </style>
     </head>
     <body>
+        
+    
+        
+         @include('components/navBar2')
 
 
+        <div class="container animated fadeInUp ">
+             <br>
+             <br>
+             <br>
+             <hr>
+             
+           
+            <h1>Tu Voto Ha sido Enviado </h1>
+            <a class="nav-link" href="{{ url('/peliculas') }}"><button type="button" class="btn btn-primary btn-lg">Continuar</button></a>
+  
 
+                  
+             
+              
+                 
 
-        @include('components/navBar')
-
-        <div class="cont_img">
-            <img src="../img/carousel/PORTADA_INICIO.jpg" class="responsive" alt="Responsive image">
-            <div class="text_cent_img"><h1 class="tit-sob-img">Inicio</h1></div>
-          </div>
-
-        <div class="container">
-            <br><br><br>
-            <div class="row wow animated fadeIn ">
-
-                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center" style="padding-right:4%">
-
-                    <h1  class="titulo" >EL FESTIVAL</h1 >
-                    <hr>
-                    <img src="../img/logos/FONOTIPO-IX-FESTIVAL.png" alt="imagen" height="90%" class="responsive rounded">
-                    <br><br>
-                    <p>El Festival Kunturñawi exhibe películas en espacios convencionales y alternativos de Ecuador, para acceso al cine ecuatoriano y formación de públicos. A través del Festival Kunturñawi Internacional, se exhibe las películas en varios países de América y Europa.</p>
-                    <p>El Festival Kunturñawi es un mediador cultural entre las producciones cinematográficas, autores y pueblos y nacionalidades de la Región 3 de Ecuador, para descentralizar el cine, el acceso y la formación de públicos.</p>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center" style="padding-left:4%">
-                    <img src="../img/carousel/festival1.jpg" alt="imagen" height="90%" class="responsive rounded">
-
-                </div>
-
-
-
-            </div>
-
+           
         </div>
-
 
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
