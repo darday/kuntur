@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\calificacion_film_user;
 use App\Film;
 use App\User;
 use Illuminate\Http\Request;
@@ -107,14 +108,23 @@ class FilmController extends Controller
         if(Auth::user()){
         $id_user['id_user']=Auth::user()->id;
         $datos['film']=Film::findOrFail($id);
+        $svoto=calificacion_film_user::where('user_id',$id_user)->where('film_id',$id)->count();
+       //$count['count']=$svoto::count();
+        //
         // $count['count']=$film::count();
-         return view('pelicula',$datos,$id_user);
+        //return $svoto;
+
+                return view('pelicula',$datos,$id_user)->with('vas',$svoto);
+
+
+
+
         }
         else{
 
         $datos['film']=Film::findOrFail($id);
         // $count['count']=$film::count();
-         return view('pelicula',$datos);
+         return view('pelicula',$datos)->with('vas',5);
         }
 
 
@@ -194,7 +204,7 @@ class FilmController extends Controller
         }else{
             $estado['estado']='Habilitado';
         }
-        return view('admin.editfilm',compact('film'),$estado);
+        return view('admin.editFilm',compact('film'),$estado);
     }
 
     /**

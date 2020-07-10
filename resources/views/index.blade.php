@@ -86,7 +86,7 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center" style="padding-right:4%">
 
                     <h1  class="titulo" >EL FESTIVAL</h1 >
-                    <hr>
+                    <hr style="height:1px !important"  color="#636b6f">
                     <img src="../img/logos/FONOTIPO-IX-FESTIVAL.png" alt="imagen" height="90%" class="responsive rounded">
                     <br><br>
                     <p>El Festival Kunturñawi exhibe películas en espacios convencionales y alternativos de Ecuador, para acceso al cine ecuatoriano y formación de públicos. A través del Festival Kunturñawi Internacional, se exhibe las películas en varios países de América y Europa.</p>

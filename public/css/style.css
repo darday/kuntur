@@ -108,40 +108,6 @@ h1.tit-sob-img {
     font-size: 9em;
 
   }
-  @media screen and (min-width: 200px) {
-    .tit-sob-img h1 {
-
-        font-size: 9em !important;
-    };
-  }
-@media screen and (min-width: 475px) {
-    h1 .tit-sob-img h1 {
-
-        font-size: 9em !important;
-    }
-  };
-
-  @media screen and (min-width: 770px) {
-    .bradcumb-title h1 {
-
-        font-size: 9em;
-    };
-    }
-  @media screen and (min-width: 1000px) {
-    .bradcumb-title h1 {
-
-
-      font-size: 9em;
-    };
-
-    @media screen and (min-width: 1500px) {
-        .bradcumb-title h1 {
-
-
-          font-size: 9em;
-        };
-  }
-
 
 /***********finTexto sobre Imagen***************/
 
@@ -307,6 +273,32 @@ h1.tit-sob-img {
     font-family: 'FontAwesome'
 }
 /***********FIN BANNER***********************/
+
+
+
+
+
+/***************Inicio Video Responsive**************/
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16/9 ratio */
+    padding-top: 30px; /* IE6 workaround*/
+    height: 0;
+    overflow: hidden;
+    }
+
+    .video-responsive iframe,
+    .video-responsive object,
+    .video-responsive embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    }
+
+
+/***************Fin Video Responsive**************/
 /*********************Animaciones*****************************/
 .animated {
   -webkit-animation-duration: 1s;

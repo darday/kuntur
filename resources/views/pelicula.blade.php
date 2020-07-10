@@ -66,9 +66,9 @@
         </style>
     </head>
     <body>
-        
-    
-        
+
+
+
          @include('components/navBar2')
 
 
@@ -79,41 +79,43 @@
              <hr>
              <div class="row ">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center">
-                        <img src="{{ asset('storage').'/'. $film->film_imagen}}" alt="foto"  height="520px" width="100%">  <!--se debe agregar php artisan storage:link-->                  
+                        <img src="{{ asset('storage').'/'. $film->film_imagen}}" alt="foto"  height="520px" width="100%">  <!--se debe agregar php artisan storage:link-->
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 text-left">
-                        <h1><b>{{$film->film_Titulo}}</b></h1>                
-                        <h3>{{$film->film_Categoria}}</h3>                
-                        <p>Director: {{$film->film_Director}}</p>             
-                        <p>Duración: {{$film->film_Duracion}}</p>                
-                        <p>Ciudad: {{$film->film_Ciudad}} - {{$film->film_Anio}}</p>                
-                        <p>Sinopsis: {{$film->film_Descripcion}} </p>  
+                        <h1><b>{{$film->film_Titulo}}</b></h1>
+                        <h3>{{$film->film_Categoria}}</h3>
+                        <p>Director: {{$film->film_Director}}</p>
+                        <p>Duración: {{$film->film_Duracion}}</p>
+                        <p>Ciudad: {{$film->film_Ciudad}} - {{$film->film_Anio}}</p>
+                        <p>Sinopsis: {{$film->film_Descripcion}} </p>
+
+
                         <hr>
                         @if( $film->film_Estado == 0)
                             <h3><b> Esta Película está Deshabilitada</b></h3><hr>
                             <h4> Revise el Horario de Proyección</h4>
-                        @endif 
+                        @endif
                         @if( $film->film_Estado == 1)
                             <h3><b> Esta Película está Habilitada</b></h3><hr>
-                        @endif              
-                                        
+                        @endif
+
                     </div>
 
-                    
-               
+
+
                     <!--------------------------------------------------------->
-            </div>   
+            </div>
 
                 <div class="row  align-items-center">
-                     
-                    
+
+
 
                     @if( $film->film_Estado == 1)
                             <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center  " >
-                                <h1 >No Olvides dejar tu Voto</h1>                                     
-                                     
+                                <h1 >No Olvides dejar tu Voto</h1>
+
                                 <div class="accordion" id="accordionExample">
-                                    
+
                                     <div class="card">
                                         <div class="card-header" id="headingTwo">
                                         <h2 class="mb-0">
@@ -122,7 +124,7 @@
                                             </button>
                                         </h2>
                                         </div>
-                                        @if(Auth::user())
+                                        @if(Auth::user() && $vas==0 )
                                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                         <!--<div class="card-body">
                                                 <button type="button" class="btn btn-success">Sobresaliente</button>
@@ -133,71 +135,81 @@
                                             <div class="card-body">
                                                 <form method="post" action="{{url('/vote/'.$film->id)}}">
                                                     {{csrf_field()}}
-                                                    <input type="hidden" name="vote" value="1">                                                   
+                                                    <input type="hidden" name="vote" value="1">
                                                     <button type="Submit" class="btn btn-danger"  > Sobresaliente</button>
-                                                </form>  
+                                                </form>
                                                 <form method="post" action="{{url('/vote/'.$film->id)}}">
                                                     {{csrf_field()}}
-                                                    <input type="hidden" name="vote" value="2">                                                   
+                                                    <input type="hidden" name="vote" value="2">
                                                     <button type="Submit" class="btn btn-danger"  > Muy Bueno</button>
-                                                </form>  
+                                                </form>
                                                 <form method="post" action="{{url('/vote/'.$film->id)}}">
                                                     {{csrf_field()}}
-                                                    <input type="hidden" name="vote" value="3">                                                   
+                                                    <input type="hidden" name="vote" value="3">
                                                     <button type="Submit" class="btn btn-danger"  > Bueno</button>
-                                                </form>  
-                                                
-                                                
-                                                
+                                                </form>
+
+
+
                                             </div>
                                         </div>
                                         @endif
-                                        
-                                        @if (Auth::user() == null)
+
+                                        @if (Auth::user() == null )
                                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                 
+
 
                                             <div class="card-body">
-                                                <h2>Debes iniciar sesion para poder Votar</h2>                                                
+                                                <h2>Debes iniciar sesion para poder Votar</h2>
+                                            </div>
+                                        </div>
+                                        @endif
+
+                                        @if (Auth::user() != null && $vas != 0  )
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+
+
+                                            <div class="card-body">
+                                                <h2>Usted ya ha votado por esta pelicula</h2>
                                             </div>
                                         </div>
                                         @endif
 
                                     </div>
-                                    
-                                    
+
+
                                 </div>
-                            
+
                             </div>
                             <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 text-center embed-container">
                                 <iframe src="https://player.vimeo.com/video/{{$film->film_Url}}" width="640" height="360"  frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
                             </div>
                     @endif
-                    
-               
+
+
                     <!--------------------------------------------------------->
-                </div>   
+                </div>
 
                  <div class="row ">
-                    
-                    
 
-                  
+
+
+
                             <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 text-center">
-                                
-                                <h1>COMENTARIOS</h1>           
-                            </div>
-                            
-                    
-                    
-               
-                    <!--------------------------------------------------------->
-                </div>   
-             
-              
-                 
 
-           
+                                <h1>COMENTARIOS</h1>
+                            </div>
+
+
+
+
+                    <!--------------------------------------------------------->
+                </div>
+
+
+
+
+
         </div>
 
 

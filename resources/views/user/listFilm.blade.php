@@ -5,7 +5,7 @@
     <div class="row" >
         @include('components/sideBarUser')
             <div class="col-12 col-sm-12 col-md-10 col-lg-9 col-xl-9">
-                <h1>Listado de Películas</h1>
+                <h1>Mis Votos</h1>
                 <hr>
 
                 <div class="alert alert-success" role="alert">
@@ -26,15 +26,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($voto as $votel)
+                        @foreach($user as $votel)
                         <tr>
 
                             <td>{{$loop->iteration}}</td>
                             <td>
+                                <img src="{{ asset('storage').'/'. $votel->film_imagen}}" alt="foto" width="70px" height="110px">  <!--se debe agregar php artisan storage:link-->
+
                             </td>
-                            <td>{{$votel->calificacion_id}}</td>
-                            <td>{{$votel->film_id}}</td>
-                            <td>{{$votel->user_id}}</td>
+                            <td>{{$votel->film_Titulo}}</td>
+
+                            <td>{{$votel->film_Categoria}}</td>
+                            <td>{{$votel->calf_nombre}}</td>
 
 
                             <td>
@@ -43,7 +46,7 @@
                                 <button type="button" class="btn btn-warning"> Editar</button>
                             </a>
 
-                            <form method="post" action="{{url('/delete/'.$votel->id)}}">
+                            <form method="post" action="{{url('/delete_vote/'.$votel->id)}}">
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}
                                 <button type="Submit" class="btn btn-danger" onclick="return confirm('¿Desea Borrar?');  " > Borrar</button>

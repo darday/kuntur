@@ -31,6 +31,7 @@ Route::get('/peliculas', 'FilmController@peliculas')->name('peliculas');
 Route::get('/pelicula/{id}', 'FilmController@pelicula')->name('pelicula');
 Route::post('/vote/{id}', 'FilmController@vote')->name('vote');
 Route::get('/lista', 'CalificacionFilmUserController@index')->name('lista');
+Route::delete('/delete_vote/{id}', 'CalificacionFilmUserController@destroy')->name('delete_vote');
 
 Auth::routes();
 

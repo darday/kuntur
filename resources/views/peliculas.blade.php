@@ -76,7 +76,7 @@
          <div class="cont_img">
             <img src="../img/carousel/PORTADA_INICIO.jpg" class="responsive" alt="Responsive image">
             <div class="text_cent_img"><h1 class="tit-sob-img">Películas</h1></div>
-          </div>
+        </div>
 
         <div class="container">
              <br>
@@ -89,7 +89,7 @@
             <div class="container animated fadeInUp">
                 <div class="row ">
 
-  @foreach($film as $film)
+                @foreach($film as $film)
                     <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center">
                         <div id="mainwrapper">
                             <div  class="box">
